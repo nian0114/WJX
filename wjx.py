@@ -22,12 +22,14 @@ Cookie: .ASPXANONYMOUS=XZU9xTH90wEkAAAAMDI3OGRmNzgtMjc3OC00OGYyLWFlY2ItNTE4YWYzN
 submitdata=1%241%7D2%242
 """
 
-headers = {'Host': '/joinnew/processjq.ashx?curid=21945553&starttime=2018%2F3%2F28%2022%3A42%3A05&source=directphone&submittype=1&rn=1919210476.53647438&t=1522248128032',
+curid="21964368"
+
+headers = {'Host': '/joinnew/processjq.ashx?curid='+curid+'&starttime=2018%2F3%2F28%2022%3A42%3A05&source=directphone&submittype=1&rn=1919210476.53647438&t=1522248128032',
            'Accept': 'text/plain, */*; q=0.01',
            'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7',
            'Accept-Encoding': 'gzip, deflate',
            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36',
-           'Referer': 'https://www.wjx.cn/m/21945553.aspx',
+           'Referer': 'https://www.wjx.cn/m/'+curid+'.aspx',
            'Cookie': '.ASPXANONYMOUS=XZU9xTH90wEkAAAAMDI3OGRmNzgtMjc3OC00OGYyLWFlY2ItNTE4YWYzNTY4ODI4EBsgaau7rm0V6CFkK-ZvHmf6b_I1; jac21894007=78211911; ASP.NET_SessionId=tnctrzdnrydd5wr3dykybsa3; jac21930808=85440383; LastActivityJoin=21945553,101420916745; jac21945553=53647438',
            'Origin': 'https://www.wjx.cn',
            'X-Requested-With': 'XMLHttpRequest',
@@ -49,7 +51,6 @@ def post(url, data,proxy_handler):
     return response.read()
 
 def main():
-    posturl = "https://www.wjx.cn/joinnew/processjq.ashx?curid=21945553&starttime=2018%2F3%2F28%2022%3A42%3A05&source=directphone&submittype=1&rn=1919210476.53647438&t=1522248128032"
 
     '''
     proxyHost = "http-dyn.abuyun.com"
@@ -71,8 +72,19 @@ def main():
     })
     '''
 
+    posturl = "https://www.wjx.cn/joinnew/processjq.ashx?curid="+curid+"&starttime=2018%2F3%2F28%2022%3A42%3A05&source=directphone&submittype=1&rn=1919210476.53647438&t=1522248128032"
+    dict= ["3","1","2"]
+
+    data_result=""
+
+    for k in range(len(dict)):
+        data_result += str(k+1)+"$"+dict[k]+"}"
+
+    print urllib.quote(data_result[:-1])
+
     proxy_handler = ""
-    data = {'submitdata':'1%241%7D2%242'}
+
+    data = {'submitdata':data_result[:-1]}
 
     while 1:
         try:
