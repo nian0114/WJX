@@ -81,14 +81,24 @@ def main():
     '''
 
     posturl = "https://www.wjx.cn/joinnew/processjq.ashx?curid="+curid+"&starttime=2018%2F3%2F29%2018%3A04%3A31&source=directphone&submittype=1&rn=796663080&t=1522317881413"
-    dict= ["3","1","2"]
+    dict= [["3"],["1"],["2"],["1","2"]]
 
     data_result=""
 
     for k in range(len(dict)):
-        data_result += str(k+1)+"$"+dict[k]+"}"
+        if len(dict[k])==1:
+            data_result += str(k+1)+urllib.quote("$")+dict[k][0]+urllib.quote("}")
+        else:
+            data_result += str(k+1)+urllib.quote("$")
+            for v in range(len(dict[k])):
+                if v+1 ==len(dict[k]):
+                    data_result += str(v+1)+"!"+dict[k][v]
+                else:
+                    data_result += str(v+1)+"!"+dict[k][v]+urllib.quote(",")
+            data_result += urllib.quote("}")
 
-    print urllib.quote(data_result[:-1])
+
+    print data_result[:-3]
 
     proxy_handler = ""
 
