@@ -81,38 +81,38 @@ def main():
     '''
 
     posturl = "https://www.wjx.cn/joinnew/processjq.ashx?curid="+curid+"&starttime=2018%2F3%2F29%2018%3A04%3A31&source=directphone&submittype=1&rn=796663080&t=1522317881413"
-    dict= [[random_index([1,1,0,0,0,0,0])],
-           [random_index([1,3,1,0,0,0,0])],
-           [random_index([0,5,3,0,0,0,0])],
-           [random_index([2,3,3,2,1,0,0])],
-           [random_index([0,0,0,0,3,3,2]),random_index([0,0,0,1,3,3,2]),random_index([0,0,0,2,3,3,2]),random_index([0,0,0,1,3,3,1])],
-           [random_index([0,0,0,1,3,3,2]),random_index([0,0,0,2,3,3,2]),random_index([0,0,0,1,3,3,2]),random_index([0,0,1,1,3,3,1])],
-           [random_index([0,0,0,0,2,3,3]),random_index([0,0,0,0,0,2,3]),random_index([0,0,0,1,3,3,1]),random_index([0,0,0,0,1,1,1])],
-           [random_index([0,0,0,0,0,3,3]),random_index([0,0,0,0,0,3,3]),random_index([0,0,0,0,0,3,3]),random_index([0,0,0,0,0,2,3]),random_index([0,0,0,0,1,1,1]),random_index([0,0,0,1,3,3,1]),random_index([0,0,0,0,3,3,1]),random_index([0,0,0,0,0,1,1]),random_index([0,0,0,2,3,3,1])]]
-
-    data_result=""
-
-    for k in range(len(dict)):
-        if len(dict[k])==1:
-            data_result += str(k+1)+urllib.quote("$")+dict[k][0]+urllib.quote("}")
-        else:
-            data_result += str(k+1)+urllib.quote("$")
-            for v in range(len(dict[k])):
-                if v+1 ==len(dict[k]):
-                    data_result += str(v+1)+"!"+dict[k][v]
-                else:
-                    data_result += str(v+1)+"!"+dict[k][v]+urllib.quote(",")
-            data_result += urllib.quote("}")
-
-
-    print data_result[:-3]
-
     proxy_handler = ""
 
-    data = {'submitdata':data_result[:-3]}
 
     while 1:
         try:
+            dict= [[random_index([1,1,0,0,0,0,0])],
+                   [random_index([1,3,1,0,0,0,0])],
+                   [random_index([0,5,3,0,0,0,0])],
+                   [random_index([2,3,3,2,1,0,0])],
+                   [random_index([0,0,0,0,3,3,2]),random_index([0,0,0,1,3,3,2]),random_index([0,0,0,2,3,3,2]),random_index([0,0,0,1,3,3,1])],
+                   [random_index([0,0,0,1,3,3,2]),random_index([0,0,0,2,3,3,2]),random_index([0,0,0,1,3,3,2]),random_index([0,0,1,1,3,3,1])],
+                   [random_index([0,0,0,0,2,3,3]),random_index([0,0,0,0,0,2,3]),random_index([0,0,0,1,3,3,1]),random_index([0,0,0,0,1,1,1])],
+                   [random_index([0,0,0,0,0,3,3]),random_index([0,0,0,0,0,3,3]),random_index([0,0,0,0,0,3,3]),random_index([0,0,0,0,0,2,3]),random_index([0,0,0,0,1,1,1]),random_index([0,0,0,1,3,3,1]),random_index([0,0,0,0,3,3,1]),random_index([0,0,0,0,0,1,1]),random_index([0,0,0,2,3,3,1])]]
+
+            data_result=""
+
+            for k in range(len(dict)):
+                if len(dict[k])==1:
+                    data_result += str(k+1)+urllib.quote("$")+dict[k][0]+urllib.quote("}")
+                else:
+                    data_result += str(k+1)+urllib.quote("$")
+                    for v in range(len(dict[k])):
+                        if v+1 ==len(dict[k]):
+                            data_result += str(v+1)+"!"+dict[k][v]
+                        else:
+                            data_result += str(v+1)+"!"+dict[k][v]+urllib.quote(",")
+                    data_result += urllib.quote("}")
+
+
+            print data_result[:-3]
+
+            data = {'submitdata':data_result[:-3]}
             print post(posturl, data,proxy_handler)
         except:
             continue
