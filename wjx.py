@@ -26,7 +26,6 @@ curid="21925942"
 
 def post(url, data,proxy_handler):
     req = urllib2.Request(url)
-    data = urllib.urlencode(data)
     opener = urllib2.build_opener()
     #opener = urllib2.build_opener(proxy_handler)
     opener.addheaders= [ ('User-Agent','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36') ]
@@ -80,9 +79,13 @@ def main():
     })
     '''
 
-    posturl = "https://www.wjx.cn/joinnew/processjq.ashx?curid="+curid+"&starttime=2018%2F3%2F29%2018%3A04%3A31&source=directphone&submittype=1&rn=796663080&t=1522317881413"
+    posturl = "https://www.wjx.cn/joinnew/processjq.ashx?curid="+curid+"&starttime=2018%2F3%2F30%2013%3A17%3A55&source=directphone&submittype=1&rn=457541419&t=152238513450"
     proxy_handler = ""
-
+    '''
+    proxy_handler = urllib2.ProxyHandler({
+        "http"  : "127.0.0.1:8080"
+    })
+    '''
 
     while 1:
         try:
@@ -112,7 +115,7 @@ def main():
 
             print data_result[:-3]
 
-            data = {'submitdata':data_result[:-3]}
+            data = 'submitdata='+data_result[:-3]
             print post(posturl, data,proxy_handler)
         except:
             continue
