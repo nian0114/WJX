@@ -102,7 +102,7 @@ def main():
 
     proxy_handler = ""
 
-    data = {'submitdata':data_result[:-1]}
+    data = {'submitdata':data_result[:-3]}
 
     while 1:
         try:
