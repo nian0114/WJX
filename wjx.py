@@ -2,7 +2,7 @@
 import requests
 import urllib
 import urllib2
-from random import randint
+import random
 
 """
 POST /joinnew/processjq.ashx?curid=21945553&starttime=2018%2F3%2F28%2022%3A42%3A05&source=directphone&submittype=1&rn=1919210476.53647438&t=1522248128032 HTTP/1.1
@@ -38,12 +38,25 @@ def post(url, data,proxy_handler):
     opener.addheaders.append( ('Cookie',' .ASPXANONYMOUS=rlxUNs390wEkAAAAN2IwYzQ4OTItMDU3Ni00MWVmLTkwZmMtNTAyYzg2Y2UzN2E09r7saLW-Lb6Mk9WLgqd5LJIusak1; UM_distinctid=16270f60bc721c-085df866e7bfdc-33697b04-1fa400-16270f60bc82bc; Hm_lvt_21be24c80829bd7a683b2c536fcf520b=1522313596; ASP.NET_SessionId=s4cx5jw4shcauybrfgblnzle; WjxUser=UserName=nian0114&Type=1; SojumpSurvey=0102B49252C25295D508FEB43264497495D50800086E00690061006E00300031003100340000012F00FF1A12DE9A18802D10E1F93F0874C32B9A6D694A56; lllogcook=1; LastCheckUpdateDate=1; _cnzz_CV4478442=%E7%94%A8%E6%88%B7%E7%89%88%E6%9C%AC%7C%E5%85%8D%E8%B4%B9%E7%89%88%7C1522313752807; CNZZDATA4478442=cnzz_eid%3D2146117123-1522308971-%26ntime%3D1522317179; Hm_lpvt_21be24c80829bd7a683b2c536fcf520b=1522317873') )
     opener.addheaders.append( ('Origin','https://www.wjx.cn') )
     opener.addheaders.append( ('X-Requested-With','XMLHttpRequest') )
-    opener.addheaders.append( ('X-Forwarded-For',str(randint(1,255))+'.'+str(randint(1,255))+'.'+str(randint(1,255))+'.'+str(randint(1,255))) )
+    opener.addheaders.append( ('X-Forwarded-For',str(random.randint(1,255))+'.'+str(random.randint(1,255))+'.'+str(random.randint(1,255))+'.'+str(random.randint(1,255))) )
     opener.addheaders.append( ('Content-Type','application/x-www-form-urlencoded; charset=UTF-8') )
     urllib2.install_opener(opener)
 
     response = opener.open(req, data)
     return response.read()
+
+def random_index(rate):
+    start = 0
+    index = 0
+    randnum = random.randint(1, sum(rate))
+    arr = ["1","2","3","4","5","6","7"]
+
+    for index, item in enumerate(rate):
+        start += item
+        if randnum <= start:
+            break
+
+    return arr[index]
 
 def main():
 
