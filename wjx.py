@@ -81,7 +81,14 @@ def main():
     '''
 
     posturl = "https://www.wjx.cn/joinnew/processjq.ashx?curid="+curid+"&starttime=2018%2F3%2F29%2018%3A04%3A31&source=directphone&submittype=1&rn=796663080&t=1522317881413"
-    dict= [["3"],["1"],["2"],["1","2"]]
+    dict= [[random_index([1,1,0,0,0,0,0])],
+           [random_index([1,3,1,0,0,0,0])],
+           [random_index([0,5,3,0,0,0,0])],
+           [random_index([2,3,3,2,1,0,0])],
+           [random_index([0,0,0,0,3,3,2]),random_index([0,0,0,1,3,3,2]),random_index([0,0,0,2,3,3,2]),random_index([0,0,0,1,3,3,1])],
+           [random_index([0,0,0,1,3,3,2]),random_index([0,0,0,2,3,3,2]),random_index([0,0,0,1,3,3,2]),random_index([0,0,1,1,3,3,1])],
+           [random_index([0,0,0,0,2,3,3]),random_index([0,0,0,0,0,2,3]),random_index([0,0,0,1,3,3,1]),random_index([0,0,0,0,1,1,1])],
+           [random_index([0,0,0,0,0,3,3]),random_index([0,0,0,0,0,3,3]),random_index([0,0,0,0,0,3,3]),random_index([0,0,0,0,0,2,3]),random_index([0,0,0,0,1,1,1]),random_index([0,0,0,1,3,3,1]),random_index([0,0,0,0,3,3,1]),random_index([0,0,0,0,0,1,1]),random_index([0,0,0,2,3,3,1])]]
 
     data_result=""
 
